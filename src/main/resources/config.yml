@@ -1,0 +1,5 @@
+# Enable changing a villager's biome type
+villager-biome-change: true
+
+# Enable converting a wandering trader into a villager with a specific biome type
+wandering-trader-to-villager-conversion: true

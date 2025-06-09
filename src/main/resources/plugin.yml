@@ -1,0 +1,7 @@
+name: VillagerBiomeSwapper
+version: '1.0'
+main: me.Eggses.villagerBiomeSwapper.VillagerBiomeSwapper
+api-version: '1.21'
+load: STARTUP
+authors: [ Eggses ]
+description: Plugin that lets you swap the biome of Villagers!
