@@ -1,5 +1,6 @@
 package me.Eggses.villagerBiomeSwapper;
 
+import me.Eggses.villagerBiomeSwapper.Config.CustomConfigurationFile;
 import me.Eggses.villagerBiomeSwapper.Listeners.RightClickEntity;
 import me.Eggses.villagerBiomeSwapper.Utility.MessageCreation;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -9,12 +10,19 @@ public final class VillagerBiomeSwapper extends JavaPlugin {
     @Override
     public void onEnable() {
 
+        // Configuration Files
         saveDefaultConfig();
+
+        CustomConfigurationFile itemsFile = new CustomConfigurationFile(this, "items.yml");
+        CustomConfigurationFile guiFile = new CustomConfigurationFile(this, "gui.yml");
+
 
         MessageCreation messageCreation = new MessageCreation();
 
+        // Commands
 
 
+        // Events
         getServer().getPluginManager().registerEvents((new RightClickEntity(messageCreation)), this);
 
 

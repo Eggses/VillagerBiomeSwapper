@@ -11,17 +11,10 @@ public class MessageCreation {
     private final LegacyComponentSerializer LEGACY_SERIALIZER = LegacyComponentSerializer.legacyAmpersand();
     private final MiniMessage MINI_MESSAGE = MiniMessage.miniMessage();
 
-    public Component createMessage(String text, Map<String, String> placeHolders) {
+    public Component createMessage(String text) {
 
         if (text == null) {
             text = "Missing text or message value";
-        }
-
-        for (Map.Entry<String, String> entry : placeHolders.entrySet()) {
-            String placeHolder = entry.getKey();
-            String value = entry.getValue();
-
-            text = text.replace(placeHolder, value);
         }
 
         return applyColour(text);
