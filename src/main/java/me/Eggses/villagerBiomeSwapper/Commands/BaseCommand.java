@@ -11,6 +11,9 @@ public class BaseCommand implements CommandExecutor {
 
         // /give item command.
 
+        // /vbs reload
+        // /vbc giveItem Player
+
 
         return true;
 

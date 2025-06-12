@@ -24,4 +24,8 @@ public enum ItemKeys {
     public NamespacedKey getKey() {
         return this.namespacedKey;
     }
+
+    public String getKeyString() {
+        return  this.key;
+    }
 }

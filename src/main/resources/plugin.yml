@@ -11,3 +11,32 @@ commands:
 
 permissions:
 
+  villagerbiomeswapper.*:
+    description: Grants access to all features.
+    default: op
+
+  villagerbiomeswapper.base:
+    description: Ability to use base command.
+    default: op
+
+  villagerbiomeswapper.giveItem:
+    description: Allows use of the /vbs giveItem <player> command.
+    default: op
+
+  villagerbiomeswapper.reload:
+    description: Allows use of the /vbs reload command.
+    default: op
+
+  villagerbiomeswapper.help:
+    description: Allows use of the /vbs help command
+    default: op
+
+  villagerbiomeswapper.swap.jungle;
+
+
+
+
+
+
+
+
