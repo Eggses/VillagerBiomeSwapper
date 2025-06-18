@@ -4,7 +4,7 @@ public enum PlaceHolder {
 
     PREFIX("%prefix%"),
     PLAYER("%player%"),
-    TARGET_PLAYER("%target");
+    TARGET_PLAYER("%target%");
 
     private final String placeHolder;
 

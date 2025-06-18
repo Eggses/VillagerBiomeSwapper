@@ -1,11 +1,9 @@
 package me.Eggses.villagerBiomeSwapper.Commands;
 
-import me.Eggses.villagerBiomeSwapper.Commands.SubCommands.GiveItemCommand;
-import me.Eggses.villagerBiomeSwapper.Commands.SubCommands.HelpCommand;
-import me.Eggses.villagerBiomeSwapper.Commands.SubCommands.ReloadCommand;
-import me.Eggses.villagerBiomeSwapper.Commands.SubCommands.SubCommand;
+import me.Eggses.villagerBiomeSwapper.Commands.SubCommands.*;
 import me.Eggses.villagerBiomeSwapper.Config.CustomConfigurationFile;
 import me.Eggses.villagerBiomeSwapper.Config.Messages;
+import me.Eggses.villagerBiomeSwapper.Items.SwapperItem;
 import me.Eggses.villagerBiomeSwapper.Utility.Commands;
 import me.Eggses.villagerBiomeSwapper.Utility.MessageCreation;
 import me.Eggses.villagerBiomeSwapper.Utility.Permission;
@@ -26,25 +24,29 @@ public class BaseCommand implements CommandExecutor {
     private final CustomConfigurationFile guiFile;
     private final CustomConfigurationFile messagesFile;
     private final MessageCreation messageCreation;
+    private final SwapperItem swapperItem;
 
     Map<String, SubCommand> subCommandMap = new HashMap<>();
 
     public BaseCommand(VillagerBiomeSwapper plugin, CustomConfigurationFile biomeSwapperItemFile,
                        CustomConfigurationFile guiFile, CustomConfigurationFile messagesFile,
-                       MessageCreation messageCreation) {
+                       MessageCreation messageCreation, SwapperItem swapperItem) {
 
         this.plugin = plugin;
         this.biomeSwapperItemFile = biomeSwapperItemFile;
         this.guiFile = guiFile;
         this.messagesFile = messagesFile;
         this.messageCreation = messageCreation;
+        this.swapperItem = swapperItem;
 
         registerSubCommands();
     }
 
     private void registerSubCommands() {
 
-        subCommandMap.put(Commands.GIVE.getCommand(), new GiveItemCommand(messageCreation));
+        subCommandMap.put(Commands.GIVE.getCommand(), new GiveItemCommand(swapperItem, messageCreation));
+
+        subCommandMap.put(Commands.GIVE_ALL.getCommand(), new GiveAllItemCommand(swapperItem, messageCreation));
 
         subCommandMap.put(Commands.HELP.getCommand(), new HelpCommand(messageCreation));
 

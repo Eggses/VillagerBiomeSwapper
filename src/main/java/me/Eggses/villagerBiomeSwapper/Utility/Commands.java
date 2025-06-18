@@ -5,6 +5,7 @@ public enum Commands {
     BASE("villagerbiomeswapper"),
 
     GIVE("give"),
+    GIVE_ALL("giveall"),
 
     HELP("help"),
 

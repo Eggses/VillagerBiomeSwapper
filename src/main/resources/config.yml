@@ -5,6 +5,13 @@ villager-biome-change: true
 wandering-trader-to-villager-conversion: true
 
 
+# Enable play sound on biome swap.
+# Sound to play on biome swap.
+
+# Enable particle effect on biome swap.
+# Particle effect to run.
+
+
 
 
 

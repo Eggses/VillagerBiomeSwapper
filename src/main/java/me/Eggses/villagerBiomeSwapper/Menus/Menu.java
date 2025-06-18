@@ -1,7 +1,6 @@
 package me.Eggses.villagerBiomeSwapper.Menus;
 
 import me.Eggses.villagerBiomeSwapper.Config.CustomConfigurationFile;
-import me.Eggses.villagerBiomeSwapper.Config.ItemConfig;
 import me.Eggses.villagerBiomeSwapper.Utility.MessageCreation;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
@@ -17,12 +16,9 @@ public abstract class Menu {
     private final MessageCreation messageCreation;
     private final CustomConfigurationFile guiFile;
 
-    private final String metaDataKey;
-
-    protected Menu(MessageCreation messageCreation, CustomConfigurationFile guiFile, String metaDataKey) {
+    protected Menu(MessageCreation messageCreation, CustomConfigurationFile guiFile) {
         this.messageCreation = messageCreation;
         this.guiFile = guiFile;
-        this.metaDataKey = metaDataKey;
     }
 
     public abstract void createInventory(Player player);
@@ -90,9 +86,5 @@ public abstract class Menu {
         }
 
         return material;
-    }
-
-    public String getMetaDataKey() {
-        return this.metaDataKey;
     }
 }

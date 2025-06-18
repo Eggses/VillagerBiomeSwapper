@@ -11,6 +11,10 @@ give:
   grant-item-target: '%prefix% <gradient:yellow:gold>Villager Biome Swapper item granted to</gradient:yellow:gold> <gradient:#00FF00:#32CD32>%target%</gradient:#00FF00:#32CD32>.'
   syntax-error: '%prefix% <red>Error:</red> <gradient:#ff5555:#ffaaaa>Invalid usage! Use /vbs give [player].</gradient:#ff5555:#ffaaaa>'
 
+give-all:
+  grant-item: '%prefix% <gradient:yellow:gold>Villager Biome Swapper item granted to all players!</gradient:yellow:gold>'
+  syntax-error: '%prefix% <red>Error:</red> <gradient:#ff5555:#ffaaaa>Invalid usage! Use /vbs giveall.</gradient:#ff5555:#ffaaaa>'
+
 reload:
   all-configs: '%prefix% <gradient:yellow:gold>All configuration files have been successfully reloaded.</gradient:yellow:gold>'
   config: '%prefix% <gradient:yellow:gold>Main configuration file successfully reloaded!</gradient:yellow:gold>'
@@ -26,6 +30,9 @@ help:
 
     <#ffaa00>*</#ffaa00> <gradient:gold:yellow>/vbs give [player]</gradient:gold:yellow>  
      <gray>-> Gives the Villager Biome Swapper Item to the target.</gray>
+    
+    <#ffaa00>*</#ffaa00> <gradient:gold:yellow>/vbs giveall</gradient:gold:yellow>  
+     <gray>-> Gives the Villager Biome Swapper Item to all Players.</gray>
     
     <#ffaa00>*</#ffaa00> <gradient:gold:yellow>/vbs reload [file]</gradient:gold:yellow>  
      <gray>-> Reloads specific or all configuration files.</gray>

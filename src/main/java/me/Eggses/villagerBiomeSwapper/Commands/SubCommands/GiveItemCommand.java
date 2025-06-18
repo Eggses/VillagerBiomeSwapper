@@ -1,8 +1,10 @@
 package me.Eggses.villagerBiomeSwapper.Commands.SubCommands;
 
 import me.Eggses.villagerBiomeSwapper.Config.Messages;
+import me.Eggses.villagerBiomeSwapper.Items.SwapperItem;
 import me.Eggses.villagerBiomeSwapper.Utility.MessageCreation;
 import me.Eggses.villagerBiomeSwapper.Utility.Permission;
+import me.Eggses.villagerBiomeSwapper.Utility.PlaceHolder;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -11,9 +13,11 @@ import java.util.Map;
 
 public class GiveItemCommand implements SubCommand {
 
+    private final SwapperItem swapperItem;
     private final MessageCreation messageCreation;
 
-    public GiveItemCommand(MessageCreation messageCreation) {
+    public GiveItemCommand(SwapperItem swapperItem, MessageCreation messageCreation) {
+        this.swapperItem = swapperItem;
         this.messageCreation = messageCreation;
     }
 
@@ -25,11 +29,6 @@ public class GiveItemCommand implements SubCommand {
             return;
         }
 
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(messageCreation.createMessage(Messages.NOT_PLAYER.getMessage(), placeHolders));
-            return;
-        }
-
         if (args.length > 2) {
             sender.sendMessage(messageCreation.createMessage(Messages.GIVE_ITEM_SYNTAX_ERROR.getMessage(), placeHolders));
             return;
@@ -37,14 +36,20 @@ public class GiveItemCommand implements SubCommand {
 
         if (args.length == 1) {
 
-            // Give Item to yourself
-            // TODO
+            if (!(sender instanceof Player player)) {
+                sender.sendMessage(messageCreation.createMessage(Messages.NOT_PLAYER.getMessage(), placeHolders));
+                return;
+            }
+
+            swapperItem.giveSwapperItemToPlayer(player);
+
             sender.sendMessage(messageCreation.createMessage(Messages.GIVE_ITEM_SELF.getMessage(), placeHolders));
             return;
         }
 
         if (args.length == 2) {
 
+            placeHolders.put(PlaceHolder.TARGET_PLAYER.getPlaceHolder(), args[1]);
             Player player = Bukkit.getPlayer(args[1]);
 
             if (player == null) {
@@ -52,15 +57,7 @@ public class GiveItemCommand implements SubCommand {
                 return;
             }
 
-            if (player == sender) {
-                // Give Item to yourself
-                // TODO
-                sender.sendMessage(messageCreation.createMessage(Messages.GIVE_ITEM_SELF.getMessage(), placeHolders));
-            }
-
-            // TODO
-            // give the other player the item.
-
+            swapperItem.giveSwapperItemToPlayer(player);
             sender.sendMessage(messageCreation.createMessage(Messages.GIVE_ITEM_TARGET.getMessage(), placeHolders));
         }
     }

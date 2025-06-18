@@ -13,6 +13,9 @@ public enum Messages {
     GIVE_ITEM_SELF("give.grant-item-self"),
     GIVE_ITEM_SYNTAX_ERROR("give.syntax-error"),
 
+    GIVE_ALL_ITEM("give-all.grant-item"),
+    GIVE_ALL_ITEM_SYNTAX_ERROR("give-all.syntax-error"),
+
     HELP("help.help-message"),
     HELP_SYNTAX_ERROR("help.syntax-error"),
 
