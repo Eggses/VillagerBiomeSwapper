@@ -1,8 +1,10 @@
 package me.Eggses.villagerBiomeSwapper.Commands.SubCommands;
 
-import org.bukkit.entity.Player;
+import org.bukkit.command.CommandSender;
 
+import java.util.Map;
+
+@FunctionalInterface
 public interface SubCommand {
-
-    public void execute(Player player, String[] args);
+    void execute(CommandSender sender, String[] args, Map<String, String> placeHolders);
 }

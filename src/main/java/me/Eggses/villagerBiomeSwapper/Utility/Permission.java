@@ -2,7 +2,8 @@ package me.Eggses.villagerBiomeSwapper.Utility;
 
 public enum Permission {
 
-    GIVE_ITEM("give.item"),
+    BASE("base"),
+    GIVE_ITEM("give"),
     RELOAD("reload"),
     HELP("help");
 

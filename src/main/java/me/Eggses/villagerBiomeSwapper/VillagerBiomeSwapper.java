@@ -1,11 +1,14 @@
 package me.Eggses.villagerBiomeSwapper;
 
+import me.Eggses.villagerBiomeSwapper.Commands.BaseCommand;
 import me.Eggses.villagerBiomeSwapper.Config.CustomConfigurationFile;
-import me.Eggses.villagerBiomeSwapper.Items.ItemKeys;
-import me.Eggses.villagerBiomeSwapper.Items.ItemManager;
+import me.Eggses.villagerBiomeSwapper.Config.Messages;
 import me.Eggses.villagerBiomeSwapper.Listeners.RightClickEntity;
+import me.Eggses.villagerBiomeSwapper.Utility.Commands;
 import me.Eggses.villagerBiomeSwapper.Utility.MessageCreation;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.Objects;
 
 public final class VillagerBiomeSwapper extends JavaPlugin {
 
@@ -15,16 +18,18 @@ public final class VillagerBiomeSwapper extends JavaPlugin {
         // Configuration Files
         saveDefaultConfig();
 
-        CustomConfigurationFile itemsFile = new CustomConfigurationFile(this, "items.yml");
+        CustomConfigurationFile messagesFile = new CustomConfigurationFile(this, "messages.yml");
+        CustomConfigurationFile biomeSwapperItemFile = new CustomConfigurationFile(this, "biomeSwapperItem.yml");
         CustomConfigurationFile guiFile = new CustomConfigurationFile(this, "gui.yml");
 
-        MessageCreation messageCreation = new MessageCreation();
+        MessageCreation messageCreation = new MessageCreation(messagesFile);
 
-        ItemManager swapperItem = new ItemManager(this, messageCreation, itemsFile, ItemKeys.SWAPPER);
-
+        Messages.setMessagesFile(messagesFile);
 
 
         // Commands
+        Objects.requireNonNull(getCommand(Commands.BASE.getCommand())).setExecutor(
+                new BaseCommand(this, biomeSwapperItemFile, guiFile, messagesFile, messageCreation));
 
 
         // Events

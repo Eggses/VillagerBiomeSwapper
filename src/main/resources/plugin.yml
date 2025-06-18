@@ -8,28 +8,50 @@ description: Plugin that lets you swap the biome of Villagers!
 
 commands:
 
+  villagerbiomeswapper:
+    description: Base command for the Villager Biome Swapper plugin.
+    usage: /<command> <subcommand>
+    aliases:
+      - vbs
+    permission: villagerbiomeswapper.base
 
 permissions:
 
   villagerbiomeswapper.*:
     description: Grants access to all features.
     default: op
+    children:
+      villagerbiomeswapper.reload: true
 
   villagerbiomeswapper.base:
     description: Ability to use base command.
     default: op
 
-  villagerbiomeswapper.giveItem:
-    description: Allows use of the /vbs giveItem <player> command.
-    default: op
-
   villagerbiomeswapper.reload:
     description: Allows use of the /vbs reload command.
     default: op
+    children:
+      villagerbiomeswapper.base: true
+
+
+  villagerbiomeswapper.give:
+    description: Allows use of the /vbs give [player] command.
+    default: op
+    children:
+      villagerbiomeswapper.base: true
 
   villagerbiomeswapper.help:
     description: Allows use of the /vbs help command
     default: op
+    children:
+      villagerbiomeswapper.base: true
+
+
+
+
+
+
+
 
   villagerbiomeswapper.swap.jungle;
 

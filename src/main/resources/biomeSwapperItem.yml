@@ -2,3 +2,4 @@ BiomeSwapperItem:
   item-material:
   item-name:
   item-lore:
+  item-glow: true
