@@ -6,6 +6,7 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class MessageCreation {
@@ -24,25 +25,21 @@ public class MessageCreation {
             text = "Missing Text Value!";
         }
 
-        if (placeHolders != null) {
 
-            String prefix = messagesFile.getCustomFile().getString(Messages.PREFIX.getMessage());
-            placeHolders.put(PlaceHolder.PREFIX.getPlaceHolder(), prefix);
+        if (placeHolders == null) placeHolders = new HashMap<>();
 
-            for (Map.Entry<String, String> entry : placeHolders.entrySet()) {
+        String prefix = messagesFile.getCustomFile().getString(Messages.PREFIX.getMessage());
+        placeHolders.put(PlaceHolder.PREFIX.getPlaceHolder(), prefix);
 
-                String placeHolder = entry.getKey();
-                String value = entry.getValue();
+        for (Map.Entry<String, String> entry : placeHolders.entrySet()) {
+            String placeHolder = entry.getKey();
+            String value = entry.getValue();
 
-                text = text.replace(placeHolder, value);
-            }
+            text = text.replace(placeHolder, value);
         }
 
-        return applyColour(text);
-    }
 
-    public Component createMessage(String text) {
-        return createMessage(text, null);
+        return applyColour(text);
     }
 
     private Component applyColour(String text) {

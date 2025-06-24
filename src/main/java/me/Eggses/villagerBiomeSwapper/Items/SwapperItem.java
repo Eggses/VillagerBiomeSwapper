@@ -107,5 +107,4 @@ public class SwapperItem {
 
         return material;
     }
-
 }

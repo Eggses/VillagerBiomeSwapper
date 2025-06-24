@@ -1,6 +1,4 @@
-# Enable Sound on Swap:
+# Enable Sound on Swap
 biome-swap-play-sound: true
-
-# Sound to Play on Swap:
+# Sound to Play on Swap
 biome-swap-sound: 'minecraft:entity.evoker.prepare_wololo'
-

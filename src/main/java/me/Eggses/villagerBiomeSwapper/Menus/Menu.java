@@ -17,30 +17,33 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Consumer;
 
 public abstract class Menu implements InventoryHolder {
 
     private final Inventory inventory;
-    private final Map<Integer, Consumer<Player>> actions = new HashMap<>();
+    private final Map<Integer, Runnable> actions = new HashMap<>();
+    private final Player player;
+    private final Map<String, String> placeHolders;
     private final CustomConfigurationFile guiFile;
     private final MessageCreation messageCreation;
 
-    protected Menu(Component title, int rowCount,
+    protected Menu(Component title, int rowCount, Player player, Map<String, String> placeHolders,
                    CustomConfigurationFile guiFile, MessageCreation messageCreation) {
 
         // This class is the owner as it's an inventory holder.
         inventory = Bukkit.createInventory(this, rowCount, title);
-
+        this.player = player;
+        this.placeHolders = placeHolders;
         this.guiFile = guiFile;
         this.messageCreation = messageCreation;
     }
 
-    public void run(Player player, int slot) {
-        Consumer<Player> action = actions.get(slot);
+    public void run(int slot) {
+
+        Runnable action = actions.get(slot);
 
         if (action != null) {
-            action.accept(player);
+            action.run();
         }
     }
 
@@ -48,7 +51,7 @@ public abstract class Menu implements InventoryHolder {
         inventory.setItem(slot, item);
     }
 
-    protected void placeItem(ItemStack item, int slot, Consumer<Player> action) {
+    protected void placeItem(ItemStack item, int slot, Runnable action) {
         inventory.setItem(slot, item);
         actions.put(slot, action);
     }
@@ -66,11 +69,11 @@ public abstract class Menu implements InventoryHolder {
 
         Material material = getMaterial(itemMaterial);
 
-        Component name = messageCreation.createMessage(itemName);
+        Component name = messageCreation.createMessage(itemName, placeHolders);
 
         List<Component> lore = new ArrayList<>();
         for (String line : itemLore) {
-            lore.add(messageCreation.createMessage(line));
+            lore.add(messageCreation.createMessage(line, placeHolders));
         }
 
         ItemStack item = new ItemStack(material, 1);
@@ -110,7 +113,7 @@ public abstract class Menu implements InventoryHolder {
         return this.inventory;
     }
 
-    protected void openInventory(Player player) {
+    public void openInventory() {
         player.openInventory(inventory);
     }
 

@@ -1,5 +1,5 @@
 biome-swapper-item:
-  item-material:
-  item-name:
-  item-lore:
+  item-material: 'STONE'
+  item-name: 'TEST'
+  item-lore: 'TEST'
   item-glow: true

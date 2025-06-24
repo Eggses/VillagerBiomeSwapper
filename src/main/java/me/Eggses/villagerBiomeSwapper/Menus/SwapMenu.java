@@ -1,8 +1,12 @@
 package me.Eggses.villagerBiomeSwapper.Menus;
 
 import me.Eggses.villagerBiomeSwapper.Config.CustomConfigurationFile;
+import me.Eggses.villagerBiomeSwapper.Items.SwapperItem;
 import me.Eggses.villagerBiomeSwapper.Utility.MessageCreation;
 import me.Eggses.villagerBiomeSwapper.Utility.Permission;
+import me.Eggses.villagerBiomeSwapper.VillagerBiomeSwapper;
+import net.kyori.adventure.key.Key;
+import net.kyori.adventure.sound.Sound;
 import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
@@ -14,34 +18,38 @@ import java.util.List;
 
 public class SwapMenu extends Menu {
 
-    private final Player playerOwner;
+    private final Player player;
     private final Villager villager;
 
+    private final VillagerBiomeSwapper villagerBiomeSwapper;
+    private final SwapperItem swapperItem;
+    private final Map<String, String> placeHolders;
     private final CustomConfigurationFile guiFile;
     private final MessageCreation messageCreation;
 
-    public SwapMenu(Player playerOwner, Villager villager,
+    public SwapMenu(Player player, Villager villager, Map<String, String> placeHolders,
+                    VillagerBiomeSwapper villagerBiomeSwapper, SwapperItem swapperItem,
                     CustomConfigurationFile guiFile, MessageCreation messageCreation) {
 
         super(
                 messageCreation.createMessage(
-                        guiFile.getCustomFile().getString("biome-swapper-gui.title")),
+                        guiFile.getCustomFile().getString("biome-swapper-gui.title"), placeHolders),
                 Row.FIVE.getSlotCount(),
+                player,
+                placeHolders,
                 guiFile,
                 messageCreation
         );
 
-        this.playerOwner = playerOwner;
+        this.player = player;
         this.villager = villager;
-
+        this.villagerBiomeSwapper = villagerBiomeSwapper;
+        this.swapperItem = swapperItem;
+        this.placeHolders = placeHolders;
         this.guiFile = guiFile;
         this.messageCreation = messageCreation;
 
         setInventoryItems();
-    }
-
-    public void openGUI() {
-        playerOwner.openInventory(getInventory());
     }
 
     @Override
@@ -72,35 +80,16 @@ public class SwapMenu extends Menu {
         updateItems(biomeItemsTypeMap);
 
 
-
         // Setting Items
         placeItem(infoItem, SwapMenuPath.INFO_ITEM.position);
-
-        placeItem(plainsItem, SwapMenuPath.PLAINS_ITEM.position, player -> {
-
-        });
-        placeItem(savannaItem, SwapMenuPath.SAVANNA_ITEM.position, player -> {
-
-        });
-        placeItem(desertItem, SwapMenuPath.DESERT_ITEM.position, player -> {
-
-        });
-        placeItem(taigaItem, SwapMenuPath.TAIGA_ITEM.position, player -> {
-
-        });
-        placeItem(snowyItem, SwapMenuPath.SNOWY_ITEM.position, player -> {
-
-        });
-        placeItem(jungleItem, SwapMenuPath.JUNGLE_ITEM.position, player -> {
-
-        });
-        placeItem(swampItem, SwapMenuPath.SWAMP_ITEM.position, player -> {
-
-
-        });
-        placeItem(closeItem, SwapMenuPath.CLOSE_ITEM.position, player -> {
-            getInventory().close();
-        });
+        placeItem(plainsItem, SwapMenuPath.PLAINS_ITEM.position, () -> swapBiomeType(Villager.Type.PLAINS));
+        placeItem(savannaItem, SwapMenuPath.SAVANNA_ITEM.position, () -> swapBiomeType(Villager.Type.SAVANNA));
+        placeItem(desertItem, SwapMenuPath.DESERT_ITEM.position, () -> swapBiomeType(Villager.Type.DESERT));
+        placeItem(taigaItem, SwapMenuPath.TAIGA_ITEM.position, () -> swapBiomeType(Villager.Type.TAIGA));
+        placeItem(snowyItem, SwapMenuPath.SNOWY_ITEM.position, () -> swapBiomeType(Villager.Type.SNOW));
+        placeItem(jungleItem, SwapMenuPath.JUNGLE_ITEM.position, () -> swapBiomeType(Villager.Type.JUNGLE));
+        placeItem(swampItem, SwapMenuPath.SWAMP_ITEM.position, () -> swapBiomeType(Villager.Type.SWAMP));
+        placeItem(closeItem, SwapMenuPath.CLOSE_ITEM.position, () -> getInventory().close());
 
         ItemStack[] inventoryContents = super.getInventory().getContents();
         for (int i = 0; i < inventoryContents.length; i++) {
@@ -120,11 +109,11 @@ public class SwapMenu extends Menu {
 
         for (String line : invalidSwapLore) {
             System.out.println(line);
-            invalidSwap.add(messageCreation.createMessage(line));
+            invalidSwap.add(messageCreation.createMessage(line, placeHolders));
         }
         for (String line : permissionFailLore) {
             System.out.println(line);
-            permissionFail.add(messageCreation.createMessage(line));
+            permissionFail.add(messageCreation.createMessage(line, placeHolders));
         }
 
         for (Map.Entry<ItemStack, Villager.Type> entry : biomeItemsTypeMap.entrySet()) {
@@ -135,7 +124,7 @@ public class SwapMenu extends Menu {
             // Update Lore if No Permission
             Permission.BiomePermission biomePermission = Permission.BiomePermission.getPermission(biomeType);
             if (biomePermission != null) {
-                if (!playerOwner.hasPermission(biomePermission.getPermission())) {
+                if (!player.hasPermission(biomePermission.getPermission())) {
                     ItemMeta itemMeta = item.getItemMeta();
                     itemMeta.lore(permissionFail);
                     item.setItemMeta(itemMeta);
@@ -153,8 +142,6 @@ public class SwapMenu extends Menu {
         }
     }
 
-
-
     private void swapBiomeType(Villager.Type targetType) {
 
         Villager.Type currentType = villager.getVillagerType();
@@ -163,12 +150,34 @@ public class SwapMenu extends Menu {
 
         Permission.BiomePermission biomePermission = Permission.BiomePermission.getPermission(targetType);
         if (biomePermission == null) return;
-        if (!playerOwner.hasPermission(biomePermission.getPermission())) return;
+        if (!player.hasPermission(biomePermission.getPermission())) return;
 
         // Valid Swap
+
         // Take Item
-        // Play sound
-        // play Particle effect
+        ItemStack mainHand = player.getInventory().getItemInMainHand();
+        ItemStack offHand = player.getInventory().getItemInOffHand();
+
+        if (swapperItem.isSwapperItem(mainHand)) {
+            player.getInventory().setItemInMainHand(null);
+        }
+        else if (swapperItem.isSwapperItem(offHand)) {
+            player.getInventory().setItemInOffHand(null);
+        }
+
+        // Play Sound
+        if (villagerBiomeSwapper.getConfig().getBoolean("biome-swap-play-sound")) {
+
+            String soundToPlay = "minecraft:entity.evoker.prepare_wololo";
+            String configSoundToPlay = villagerBiomeSwapper.getConfig().getString("biome-swap-sound");
+            if (configSoundToPlay != null) {
+                soundToPlay = configSoundToPlay;
+            }
+            Sound sound = Sound.sound(Key.key(soundToPlay), Sound.Source.PLAYER, 1.0f, 1.0f);
+
+            player.playSound(sound, Sound.Emitter.self());
+        }
+
         villager.setVillagerType(targetType);
     }
 
@@ -212,6 +221,5 @@ public class SwapMenu extends Menu {
         public String getLorePath() {
             return BASE_PATH + itemPath + LORE_PATH;
         }
-
     }
 }

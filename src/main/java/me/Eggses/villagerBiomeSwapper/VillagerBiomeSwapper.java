@@ -1,18 +1,12 @@
 package me.Eggses.villagerBiomeSwapper;
 
-import me.Eggses.villagerBiomeSwapper.Commands.BaseCommand;
 import me.Eggses.villagerBiomeSwapper.Config.CustomConfigurationFile;
 import me.Eggses.villagerBiomeSwapper.Config.Messages;
-import me.Eggses.villagerBiomeSwapper.DataManager.TraderManager;
 import me.Eggses.villagerBiomeSwapper.Items.SwapperItem;
+import me.Eggses.villagerBiomeSwapper.Listeners.InventoryEvent;
 import me.Eggses.villagerBiomeSwapper.Listeners.RightClickEntity;
-import me.Eggses.villagerBiomeSwapper.Menus.RightClick;
-import me.Eggses.villagerBiomeSwapper.MenusOld.MenuManager;
-import me.Eggses.villagerBiomeSwapper.Utility.Commands;
 import me.Eggses.villagerBiomeSwapper.Utility.MessageCreation;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.Objects;
 
 public final class VillagerBiomeSwapper extends JavaPlugin {
 
@@ -29,30 +23,20 @@ public final class VillagerBiomeSwapper extends JavaPlugin {
         MessageCreation messageCreation = new MessageCreation(messagesFile);
         Messages.setMessagesFile(messagesFile);
 
-        /*
+
         // Item Managers
         SwapperItem swapperItem = new SwapperItem(this, messageCreation, biomeSwapperItemFile);
 
-        // Data Managers
-        TraderManager traderManager = new TraderManager();
-
-        // Menus
-
-        MenuManager menuManager = new MenuManager(this, messageCreation, guiFile, traderManager, swapperItem);
 
         // Commands
+        /*
         Objects.requireNonNull(getCommand(Commands.BASE.getCommand())).setExecutor(
                 new BaseCommand(this, biomeSwapperItemFile, guiFile, messagesFile, messageCreation, swapperItem));
-
-
-        // Events
-        getServer().getPluginManager().registerEvents((new RightClickEntity
-                (this, swapperItem, menuManager, traderManager)), this);
-
          */
 
-        getServer().getPluginManager().registerEvents(new RightClick(guiFile, messageCreation), this);
-
+        // Events
+        getServer().getPluginManager().registerEvents(new RightClickEntity(this, swapperItem, messageCreation, guiFile), this);
+        getServer().getPluginManager().registerEvents(new InventoryEvent(), this);
     }
 
     @Override
