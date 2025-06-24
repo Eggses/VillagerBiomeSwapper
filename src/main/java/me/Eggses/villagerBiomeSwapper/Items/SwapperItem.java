@@ -94,6 +94,7 @@ public class SwapperItem {
         itemMeta.lore(lore);
         itemMeta.setMaxStackSize(1);
         if (glow) itemMeta.setEnchantmentGlintOverride(true);
+        item.setItemMeta(itemMeta);
 
         return item;
     }

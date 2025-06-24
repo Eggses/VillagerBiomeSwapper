@@ -108,11 +108,9 @@ public class SwapMenu extends Menu {
         List<Component> permissionFail = new ArrayList<>();
 
         for (String line : invalidSwapLore) {
-            System.out.println(line);
             invalidSwap.add(messageCreation.createMessage(line, placeHolders));
         }
         for (String line : permissionFailLore) {
-            System.out.println(line);
             permissionFail.add(messageCreation.createMessage(line, placeHolders));
         }
 
@@ -156,13 +154,9 @@ public class SwapMenu extends Menu {
 
         // Take Item
         ItemStack mainHand = player.getInventory().getItemInMainHand();
-        ItemStack offHand = player.getInventory().getItemInOffHand();
 
         if (swapperItem.isSwapperItem(mainHand)) {
             player.getInventory().setItemInMainHand(null);
-        }
-        else if (swapperItem.isSwapperItem(offHand)) {
-            player.getInventory().setItemInOffHand(null);
         }
 
         // Play Sound
@@ -179,6 +173,7 @@ public class SwapMenu extends Menu {
         }
 
         villager.setVillagerType(targetType);
+        getInventory().close();
     }
 
     enum SwapMenuPath implements MenuItem {

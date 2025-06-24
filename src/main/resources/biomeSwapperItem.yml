@@ -1,6 +1,9 @@
 biome-swapper-item:
-  item-material: 'STONE'
-  item-name: "TEST"
+  item-material: 'LIME_DYE'
+  item-name: "Villager Biome Swapper Core (Right Click)"
   item-lore:
-    - "TEST"
+    - "Right click a villager with this item to open a"
+    - "menu, allowing you to change its biome type."
+    - ""
+    - "1 Use"
   item-glow: true

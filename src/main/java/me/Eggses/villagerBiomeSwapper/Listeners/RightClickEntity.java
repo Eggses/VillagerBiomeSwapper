@@ -47,8 +47,15 @@ public class RightClickEntity implements Listener {
         }
 
         // Ensure correct item used.
-        ItemStack itemUsed = (event.getHand() == EquipmentSlot.HAND) ? player.getInventory().getItemInMainHand() : player.getInventory().getItemInOffHand();
-        if (!swapperItem.isSwapperItem(itemUsed)) return;
+        ItemStack itemUsed = null;
+
+        if (event.getHand() == EquipmentSlot.HAND) {
+            itemUsed = player.getInventory().getItemInMainHand();
+        }
+
+        if (!swapperItem.isSwapperItem(itemUsed)) {
+            return;
+        }
 
         // Ensure can Convert
         if (!player.hasPermission(Permission.CONVERT.getPermission())) {
