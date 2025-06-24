@@ -1,9 +1,9 @@
 biome-swapper-gui:
   title: "<gradient:#228B22:#339933>%prefix% Set Villager Biome:</gradient>"
   invalid-swap-text:
-    - "<gradient:#FFD700:#FFFF99>Biome type already selected.</gradient>"
+    - "<gradient:#FFD700:#FFFF99>Biome type already selected!</gradient>"
   permission-fail-swap-text:
-    - "<gradient:#FFD700:#FFFF99>You do not have permission to set this biome.</gradient>"
+    - "<gradient:#FFD700:#FFFF99>You do not have permission to set this biome!</gradient>"
   info-item:
     item-name: "<gradient:#FFFF00:#FFECB3>Information</gradient>"
     item-material: PAPER
