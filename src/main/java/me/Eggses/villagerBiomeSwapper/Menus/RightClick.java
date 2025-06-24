@@ -29,5 +29,7 @@ public class RightClick implements Listener {
 
         SwapMenu swapMenu = new SwapMenu(player, villager, guiFile, messageCreation);
         swapMenu.openGUI();
+
+        // should work
     }
 }
