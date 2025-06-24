@@ -1,4 +1,15 @@
+# ============================================
+# Villager Biome Swapper - Configuration
+# ============================================
+# This file contains all configurable settings for the Villager Biome Swapper plugin.
+#
+# For support or assistance, please visit:
+# https://discord.gg/erDzWtEQXV
+#
+# ============================================
+
 # Enable Sound on Swap
 biome-swap-play-sound: true
+
 # Sound to Play on Swap
-biome-swap-sound: 'minecraft:entity.evoker.prepare_wololo'
+biome-swap-sound: "minecraft:entity.evoker.prepare_wololo"

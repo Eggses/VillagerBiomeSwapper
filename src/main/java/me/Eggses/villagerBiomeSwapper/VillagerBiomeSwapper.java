@@ -20,7 +20,7 @@ public final class VillagerBiomeSwapper extends JavaPlugin {
         // Configuration Files
         saveDefaultConfig();
         CustomConfigurationFile messagesFile = new CustomConfigurationFile(this, "messages.yml");
-        CustomConfigurationFile biomeSwapperItemFile = new CustomConfigurationFile(this, "biomeSwapperItem.yml");
+        CustomConfigurationFile biomeSwapperItemFile = new CustomConfigurationFile(this, "item.yml");
         CustomConfigurationFile guiFile = new CustomConfigurationFile(this, "gui.yml");
 
         // Messages

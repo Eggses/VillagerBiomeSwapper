@@ -1,53 +1,67 @@
+# ============================================
+# Villager Biome Swapper - GUI
+# ============================================
+#
+# Supports both legacy color codes (& / §) and MiniMessage formatting!
+# Settings must use the same style for consistency, you cannot mix legacy codes and MiniMessages!
+#
+# For support or assistance, please visit:
+# https://discord.gg/erDzWtEQXV
+#
+# ==============================
+# Biome Swapper GUI
+# ==============================
+# Configuration for the Villager Biome Swapper GUI.
 biome-swapper-gui:
-  title: "<gradient:#228B22:#339933>%prefix% Set Villager Biome:</gradient>"
+  title: "%prefix% <bold><gradient:gold:yellow>Set Villager Biome</gradient:gold:yellow></bold>"
   invalid-swap-text:
-    - "<gradient:#FFD700:#FFFF99>Biome type already selected!</gradient>"
+    - "<gradient:#ff5555:#ffaaaa>Biome type already selected!</gradient:#ff5555:#ffaaaa>"
   permission-fail-swap-text:
-    - "<gradient:#FFD700:#FFFF99>You do not have permission to set this biome!</gradient>"
+    - "<gradient:#ff5555:#ffaaaa>You do not have permission to set this biome!</gradient:#ff5555:#ffaaaa>"
   info-item:
-    item-name: "<gradient:#FFFF00:#FFECB3>Information</gradient>"
+    item-name: "<gradient:#FFFF00:#FFFF66><italic:false>Information</italic:false></gradient:#FFFF00:#FFFF66>"
     item-material: 'PAPER'
     item-lore:
-      - "<gradient:#66CCFF:#99FFFF>Click a biome type below to set it.</gradient>"
+      - "<gradient:blue:aqua>Click a biome type below to set it.</gradient:blue:aqua>"
   plains-item:
-    item-name: "<gradient:#99FF99:#33CC33>Biome: Plains</gradient>"
+    item-name: "<gradient:#33CC33:#55DD55><italic:false>Biome: Plains</italic:false></gradient:#33CC33:#55DD55>"
     item-material: 'GRASS_BLOCK'
     item-lore:
-      - "<gradient:#55FFFF:#99CCFF>Click to change the biome to this type.</gradient>"
+      - "<gradient:blue:aqua>Click to change the biome to this type.</gradient:blue:aqua>"
   savanna-item:
-    item-name: "<gradient:#FFAA55:#FF7777>Biome: Savanna</gradient>"
+    item-name: "<gradient:#FF5555:#FF7777><italic:false>Biome: Savanna</italic:false></gradient:#FF5555:#FF7777>"
     item-material: 'ACACIA_SAPLING'
     item-lore:
-      - "<gradient:#55FFFF:#99CCFF>Click to change the biome to this type.</gradient>"
+      - "<gradient:blue:aqua>Click to change the biome to this type.</gradient:blue:aqua>"
   desert-item:
-    item-name: "<gradient:#FFE066:#D4A017>Biome: Desert</gradient>"
+    item-name: "<gradient:#FFFF00:#FFFF66><italic:false>Biome: Desert</italic:false></gradient:#FFFF00:#FFFF66>"
     item-material: 'SAND'
     item-lore:
-      - "<gradient:#55FFFF:#99CCFF>Click to change the biome to this type.</gradient>"
+      - "<gradient:blue:aqua>Click to change the biome to this type.</gradient:blue:aqua>"
   taiga-item:
-    item-name: "<gradient:#66CCCC:#336666>Biome: Taiga</gradient>"
+    item-name: "<gradient:#66CCCC:#336666><italic:false>Biome: Taiga</italic:false></gradient:#66CCCC:#336666>"
     item-material: 'SPRUCE_SAPLING'
     item-lore:
-      - "<gradient:#55FFFF:#99CCFF>Click to change the biome to this type.</gradient>"
+      - "<gradient:blue:aqua>Click to change the biome to this type.</gradient:blue:aqua>"
   snowy-item:
-    item-name: "<gradient:#FFFFFF:#CCEEFF>Biome: Snowy</gradient>"
+    item-name: "<gradient:#FFFFFF:#F0F0F5><italic:false>Biome: Snowy</italic:false></gradient:#FFFFFF:#F0F0F5>"
     item-material: 'SNOW_BLOCK'
     item-lore:
-      - "<gradient:#55FFFF:#99CCFF>Click to change the biome to this type.</gradient>"
+      - "<gradient:blue:aqua>Click to change the biome to this type.</gradient:blue:aqua>"
   jungle-item:
-    item-name: "<gradient:#228B22:#66FF66>Biome: Jungle</gradient>"
+    item-name: "<gradient:#228B22:#66FF66><italic:false>Biome: Jungle</italic:false></gradient:#228B22:#66FF66>"
     item-material: 'JUNGLE_SAPLING'
     item-lore:
-      - "<gradient:#55FFFF:#99CCFF>Click to change the biome to this type.</gradient>"
+      - "<gradient:blue:aqua>Click to change the biome to this type.</gradient:blue:aqua>"
   swamp-item:
-    item-name: "<gradient:#9933CC:#CC99FF>Biome: Swamp</gradient>"
+    item-name: "<gradient:#9933CC:#CC99FF><italic:false>Biome: Swamp</italic:false></gradient:#9933CC:#CC99FF>"
     item-material: 'LILY_PAD'
     item-lore:
-      - "<gradient:#55FFFF:#99CCFF>Click to change the biome to this type.</gradient>"
+      - "<gradient:blue:aqua>Click to change the biome to this type.</gradient:blue:aqua>"
   close-item:
-    item-name: "<gradient:#FF5555:#FFAAAA>Close Menu</gradient>"
+    item-name: "<gradient:#FF3333:#FF5555><italic:false>Close Menu</italic:false></gradient:#FF3333:#FF5555>"
     item-material: 'BARRIER'
     item-lore:
-      - "<gradient:#CC3333:#990000>Click to close.</gradient>"
+      - "<gradient:blue:aqua>Click to close.</gradient:blue:aqua>"
   panel-item:
     item-material: "LIGHT_BLUE_STAINED_GLASS_PANE"

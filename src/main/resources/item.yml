@@ -1,0 +1,26 @@
+# ============================================
+# Villager Biome Swapper - Item
+# ============================================
+# This file contains all configurable settings for the Villager Biome Swapper item.
+# Modify these settings to customise the appearance and behavior of the item.
+#
+# Supports both legacy color codes (& / §) and MiniMessage formatting!
+# Settings must use the same style for consistency, you cannot mix legacy codes and MiniMessages!
+#
+# For support or assistance, please visit:
+# https://discord.gg/erDzWtEQXV
+#
+# ==============================
+# Biome Swapper Item
+# ==============================
+# Configuration for the Villager Biome Swapper item.
+biome-swapper-item:
+  item-material: 'YELLOW_DYE'
+  item-name: "<gradient:gold:yellow><italic:false>Villager Biome Swapper (Right Click)</italic:false></gradient:gold:yellow>"
+  item-lore:
+    - "<gradient:blue:aqua>Right click a villager</gradient:blue:aqua>"
+    - "<gradient:blue:aqua>not traded with to swap</gradient:blue:aqua>"
+    - "<gradient:blue:aqua>its biome type.</gradient:blue:aqua>"
+    - "<gradient:blue:aqua></gradient:blue:aqua>"
+    - "<gradient:blue:aqua>Consumed on use.</gradient:blue:aqua>"
+  item-glow: true

@@ -46,6 +46,10 @@ public class RightClickEntity implements Listener {
             return;
         }
 
+        if (villager.getVillagerExperience() != 0 || villager.getVillagerLevel() > 1) {
+            return;
+        }
+
         // Ensure correct item used.
         ItemStack itemUsed = null;
 
