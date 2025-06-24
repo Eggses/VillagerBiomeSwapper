@@ -1,12 +1,16 @@
 package me.Eggses.villagerBiomeSwapper;
 
+import me.Eggses.villagerBiomeSwapper.Commands.BaseCommand;
 import me.Eggses.villagerBiomeSwapper.Config.CustomConfigurationFile;
 import me.Eggses.villagerBiomeSwapper.Config.Messages;
 import me.Eggses.villagerBiomeSwapper.Items.SwapperItem;
 import me.Eggses.villagerBiomeSwapper.Listeners.InventoryEvent;
 import me.Eggses.villagerBiomeSwapper.Listeners.RightClickEntity;
+import me.Eggses.villagerBiomeSwapper.Utility.Commands;
 import me.Eggses.villagerBiomeSwapper.Utility.MessageCreation;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.Objects;
 
 public final class VillagerBiomeSwapper extends JavaPlugin {
 
@@ -29,10 +33,8 @@ public final class VillagerBiomeSwapper extends JavaPlugin {
 
 
         // Commands
-        /*
         Objects.requireNonNull(getCommand(Commands.BASE.getCommand())).setExecutor(
                 new BaseCommand(this, biomeSwapperItemFile, guiFile, messagesFile, messageCreation, swapperItem));
-         */
 
         // Events
         getServer().getPluginManager().registerEvents(new RightClickEntity(this, swapperItem, messageCreation, guiFile), this);
