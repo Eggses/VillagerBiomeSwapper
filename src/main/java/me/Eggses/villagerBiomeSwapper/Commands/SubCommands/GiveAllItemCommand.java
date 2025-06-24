@@ -34,7 +34,7 @@ public class GiveAllItemCommand implements SubCommand {
         }
 
         for (Player player : Bukkit.getOnlinePlayers()) {
-            swapperItem.giveSwapperItemToPlayer(player);
+            swapperItem.giveSwapperItemToPlayer(player, placeHolders);
         }
 
         sender.sendMessage(messageCreation.createMessage(Messages.GIVE_ALL_ITEM.getMessage(), placeHolders));

@@ -14,6 +14,7 @@ import org.bukkit.persistence.PersistentDataType;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class SwapperItem {
 
@@ -31,9 +32,9 @@ public class SwapperItem {
         itemKey = new NamespacedKey(plugin, "SwapperItem");
     }
 
-    public void giveSwapperItemToPlayer(Player player) {
+    public void giveSwapperItemToPlayer(Player player, Map<String, String> placeHolders) {
 
-        ItemStack item = createSwapperItem();
+        ItemStack item = createSwapperItem(placeHolders);
 
         PlayerInventory inventory = player.getInventory();
         ItemStack[] inventoryContents = inventory.getContents();
@@ -64,7 +65,7 @@ public class SwapperItem {
         return itemMeta.getPersistentDataContainer().has(itemKey, PersistentDataType.BYTE);
     }
 
-    private ItemStack createSwapperItem() {
+    private ItemStack createSwapperItem(Map<String, String> placeHolders) {
 
         String materialPath = "biome-swapper-item.item-material";
         String itemNamePath = "biome-swapper-item.item-name";
@@ -77,17 +78,17 @@ public class SwapperItem {
         boolean glow = biomeSwapperItemFile.getCustomFile().getBoolean(itemGlowPath);
 
         Material material = getMaterial(materialValue);
-        Component name = messageCreation.createMessage(itemNameValue, null);
+        Component name = messageCreation.createMessage(itemNameValue, placeHolders);
 
         List<Component> lore = new ArrayList<>();
 
         for (String line : itemLoreValue) {
-            lore.add(messageCreation.createMessage(line, null));
+            lore.add(messageCreation.createMessage(line, placeHolders));
         }
         
         ItemStack item = new ItemStack(material);
-        ItemMeta itemMeta = item.getItemMeta();
 
+        ItemMeta itemMeta = item.getItemMeta();
         itemMeta.getPersistentDataContainer().set(itemKey, PersistentDataType.BYTE, (byte) 1);
         itemMeta.displayName(name);
         itemMeta.lore(lore);

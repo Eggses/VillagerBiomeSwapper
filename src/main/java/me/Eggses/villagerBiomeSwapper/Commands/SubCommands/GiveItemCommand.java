@@ -41,7 +41,7 @@ public class GiveItemCommand implements SubCommand {
                 return;
             }
 
-            swapperItem.giveSwapperItemToPlayer(player);
+            swapperItem.giveSwapperItemToPlayer(player, placeHolders);
 
             sender.sendMessage(messageCreation.createMessage(Messages.GIVE_ITEM_SELF.getMessage(), placeHolders));
             return;
@@ -57,7 +57,7 @@ public class GiveItemCommand implements SubCommand {
                 return;
             }
 
-            swapperItem.giveSwapperItemToPlayer(player);
+            swapperItem.giveSwapperItemToPlayer(player, placeHolders);
             sender.sendMessage(messageCreation.createMessage(Messages.GIVE_ITEM_TARGET.getMessage(), placeHolders));
         }
     }
