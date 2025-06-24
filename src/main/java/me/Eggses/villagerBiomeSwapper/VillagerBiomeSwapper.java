@@ -1,6 +1,7 @@
 package me.Eggses.villagerBiomeSwapper;
 
 import me.Eggses.villagerBiomeSwapper.Commands.BaseCommand;
+import me.Eggses.villagerBiomeSwapper.Commands.TabCompleter.VBSTabCompleter;
 import me.Eggses.villagerBiomeSwapper.Config.CustomConfigurationFile;
 import me.Eggses.villagerBiomeSwapper.Config.Messages;
 import me.Eggses.villagerBiomeSwapper.Items.SwapperItem;
@@ -26,7 +27,7 @@ public final class VillagerBiomeSwapper extends JavaPlugin {
         MessageCreation messageCreation = new MessageCreation();
         Messages.setMessagesFile(messagesFile);
 
-        // Item Managers
+        // Item Manager
         SwapperItem swapperItem = new SwapperItem(this, messageCreation, biomeSwapperItemFile);
 
         // Events
@@ -35,6 +36,7 @@ public final class VillagerBiomeSwapper extends JavaPlugin {
 
         // Commands
         Objects.requireNonNull(getCommand("villagerbiomeswapper")).setExecutor(new BaseCommand(this, biomeSwapperItemFile, guiFile, messagesFile, messageCreation, swapperItem));
+        Objects.requireNonNull(getCommand("villagerbiomeswapper")).setTabCompleter(new VBSTabCompleter());
     }
 
     @Override

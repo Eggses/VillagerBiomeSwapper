@@ -9,7 +9,6 @@ import me.Eggses.villagerBiomeSwapper.Utility.MessageCreation;
 import me.Eggses.villagerBiomeSwapper.Utility.Permission;
 import me.Eggses.villagerBiomeSwapper.Utility.PlaceHolder;
 import me.Eggses.villagerBiomeSwapper.VillagerBiomeSwapper;
-import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -57,10 +56,9 @@ public class BaseCommand implements CommandExecutor {
 
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command,
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull org.bukkit.command.Command command,
                                 @NotNull String s, @NotNull String @NotNull [] args) {
 
-        String name = sender.getName();
         Map<String, String> placeHolders = new HashMap<>();
 
         if (sender instanceof Player player) {

@@ -1,6 +1,5 @@
 package me.Eggses.villagerBiomeSwapper.Utility;
 
-import me.Eggses.villagerBiomeSwapper.Config.CustomConfigurationFile;
 import me.Eggses.villagerBiomeSwapper.Config.Messages;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
