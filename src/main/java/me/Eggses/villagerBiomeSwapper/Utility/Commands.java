@@ -8,7 +8,7 @@ public enum Commands {
     HELP("help"),
 
     RELOAD("reload"),
-    RELOAD_ITEM("biomeSwapperitem"),
+    RELOAD_ITEM("biomeSwapperItem"),
     RELOAD_CONFIG("config"),
     RELOAD_GUI("gui"),
     RELOAD_MESSAGES("messages");

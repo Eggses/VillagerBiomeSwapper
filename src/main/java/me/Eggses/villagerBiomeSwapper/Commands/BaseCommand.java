@@ -12,6 +12,7 @@ import me.Eggses.villagerBiomeSwapper.VillagerBiomeSwapper;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -61,7 +62,10 @@ public class BaseCommand implements CommandExecutor {
 
         String name = sender.getName();
         Map<String, String> placeHolders = new HashMap<>();
-        placeHolders.put(PlaceHolder.PLAYER.getPlaceHolder(), name);
+
+        if (sender instanceof Player player) {
+            placeHolders.put(PlaceHolder.PLAYER.getPlaceHolder(), player.getName());
+        }
 
         // No Permission
         if (!sender.hasPermission(Permission.BASE.getPermission())) {

@@ -11,13 +11,8 @@ import java.util.Map;
 
 public class MessageCreation {
 
-    private final CustomConfigurationFile messagesFile;
     private final LegacyComponentSerializer LEGACY_SERIALIZER = LegacyComponentSerializer.legacyAmpersand();
     private final MiniMessage MINI_MESSAGE = MiniMessage.miniMessage();
-
-    public MessageCreation(CustomConfigurationFile messagesFile) {
-        this.messagesFile = messagesFile;
-    }
 
     public Component createMessage(String text, Map<String, String> placeHolders) {
 
@@ -25,11 +20,9 @@ public class MessageCreation {
             text = "Missing Text Value!";
         }
 
-
         if (placeHolders == null) placeHolders = new HashMap<>();
 
-        String prefix = messagesFile.getCustomFile().getString(Messages.PREFIX.getMessage());
-        placeHolders.put(PlaceHolder.PREFIX.getPlaceHolder(), prefix);
+        placeHolders.put(PlaceHolder.PREFIX.getPlaceHolder(), Messages.PREFIX.getMessage());
 
         for (Map.Entry<String, String> entry : placeHolders.entrySet()) {
             String placeHolder = entry.getKey();
@@ -37,7 +30,6 @@ public class MessageCreation {
 
             text = text.replace(placeHolder, value);
         }
-
 
         return applyColour(text);
     }

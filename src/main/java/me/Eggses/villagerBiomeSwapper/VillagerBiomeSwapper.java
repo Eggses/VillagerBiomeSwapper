@@ -23,9 +23,8 @@ public final class VillagerBiomeSwapper extends JavaPlugin {
         CustomConfigurationFile guiFile = new CustomConfigurationFile(this, "gui.yml");
 
         // Messages
-        MessageCreation messageCreation = new MessageCreation(messagesFile);
+        MessageCreation messageCreation = new MessageCreation();
         Messages.setMessagesFile(messagesFile);
-
 
         // Item Managers
         SwapperItem swapperItem = new SwapperItem(this, messageCreation, biomeSwapperItemFile);
