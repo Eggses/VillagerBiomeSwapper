@@ -1,5 +1,7 @@
 package me.Eggses.villagerBiomeSwapper.Utility;
 
+import org.bukkit.entity.Villager;
+
 public enum Permission {
 
     BASE("base"),
@@ -7,15 +9,7 @@ public enum Permission {
     RELOAD("reload"),
     HELP("help"),
 
-    VILLAGER("convert.entity.villager"),
-    TRADER("convert.entity.wanderingtrader"),
-    DESERT("convert.biome.desert"),
-    JUNGLE("convert.biome.jungle"),
-    PLAINS("convert.biome.plains"),
-    SAVANNA("convert.biome.savanna"),
-    SNOW("convert.biome.snow"),
-    SWAMP("convert.biome.swamp"),
-    TAIGA("convert.biome.taiga");
+    CONVERT("convert.entity.villager");
 
     private static final String base = "villagerbiomeswapper.";
     private final String permission;
@@ -28,7 +22,39 @@ public enum Permission {
         return base + permission;
     }
 
-    public static Permission[] getBiomeTypes() {
-        return new Permission[] {DESERT, JUNGLE, PLAINS, SAVANNA, SNOW, SWAMP, TAIGA};
+    public enum BiomePermission {
+        DESERT("convert.biome.desert", Villager.Type.DESERT),
+        JUNGLE("convert.biome.jungle", Villager.Type.JUNGLE),
+        PLAINS("convert.biome.plains", Villager.Type.PLAINS),
+        SAVANNA("convert.biome.savanna", Villager.Type.SAVANNA),
+        SNOW("convert.biome.snow", Villager.Type.SNOW),
+        SWAMP("convert.biome.swamp", Villager.Type.SWAMP),
+        TAIGA("convert.biome.taiga", Villager.Type.TAIGA);
+
+        private final String permission;
+        private final Villager.Type villagerType;
+
+        BiomePermission(String permission, Villager.Type villagerType) {
+            this.permission = permission;
+            this.villagerType = villagerType;
+        }
+
+        public String getPermission() {
+            return base + permission;
+        }
+
+        public Villager.Type getVillagerType() {
+            return villagerType;
+        }
+
+        public static BiomePermission getPermission(Villager.Type villagerType) {
+
+            for (BiomePermission biomePermission : BiomePermission.values()) {
+                if (biomePermission.villagerType == villagerType) {
+                    return biomePermission;
+                }
+            }
+            return null;
+        }
     }
 }

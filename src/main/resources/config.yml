@@ -1,17 +1,6 @@
-# Enable changing a villager's biome type
-villager-biome-change: true
+# Enable Sound on Swap:
+biome-swap-play-sound: true
 
-# Enable converting a wandering trader into a villager with a specific biome type
-wandering-trader-to-villager-conversion: true
-
-
-# Enable play sound on biome swap.
-# Sound to play on biome swap.
-
-# Enable particle effect on biome swap.
-# Particle effect to run.
-
-
-
-
+# Sound to Play on Swap:
+biome-swap-sound: 'minecraft:entity.evoker.prepare_wololo'
 

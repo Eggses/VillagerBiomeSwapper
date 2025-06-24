@@ -1,28 +1,27 @@
 package me.Eggses.villagerBiomeSwapper.DataManager;
 
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Villager;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class TraderManager {
 
-    private final Map<Player, Entity> entityMap;
+    private final Map<Player, Villager> villagerMap;
+    private final Map<Player, Villager.Type> currentVillagerType;
 
     public TraderManager() {
-        entityMap = new HashMap<>();
+        villagerMap = new HashMap<>();
+        currentVillagerType = new HashMap<>();
     }
 
-    public void addEntry(Player player, Entity entity) {
-        entityMap.put(player, entity);
+    public Map<Player, Villager> getVillagerMap() {
+        return villagerMap;
     }
 
-    public void removeEntry(Player player) {
-        entityMap.remove(player);
+    public Map<Player, Villager.Type> getCurrentVillagerType() {
+        return currentVillagerType;
     }
 
-    public Entity getEntity(Player player) {
-        return entityMap.get(player);
-    }
 }

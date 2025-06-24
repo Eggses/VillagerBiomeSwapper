@@ -1,2 +1,51 @@
-BiomeSwapperGUI:
-
+biome-swapper-gui:
+  title: "<gradient:#228B22:#339933>%prefix% Set Villager Biome:</gradient>"
+  invalid-swap-text: "<gradient:#FFD700:#FFFF99>Biome type already selected.</gradient>"
+  permission-fail-swap-text: "<gradient:#FFD700:#FFFF99>You do not have permission to set this biome.</gradient>"
+  info-item:
+    item-name: "<gradient:#FFFF00:#FFECB3>Information</gradient>"
+    item-material: PAPER
+    item-lore:
+      - "<gradient:#66CCFF:#99FFFF>Click a biome type below to set it.</gradient>"
+  plains-item:
+    item-name: "<gradient:#99FF99:#33CC33>Biome: Plains</gradient>"
+    item-material: GRASS_BLOCK
+    item-lore:
+      - "<gradient:#55FFFF:#99CCFF>Click to change the biome to this type.</gradient>"
+  savanna-item:
+    item-name: "<gradient:#FFAA55:#FF7777>Biome: Savanna</gradient>"
+    item-material: ACACIA_SAPLING
+    item-lore:
+      - "<gradient:#55FFFF:#99CCFF>Click to change the biome to this type.</gradient>"
+  desert-item:
+    item-name: "<gradient:#FFE066:#D4A017>Biome: Desert</gradient>"
+    item-material: SAND
+    item-lore:
+      - "<gradient:#55FFFF:#99CCFF>Click to change the biome to this type.</gradient>"
+  taiga-item:
+    item-name: "<gradient:#66CCCC:#336666>Biome: Taiga</gradient>"
+    item-material: SPRUCE_SAPLING
+    item-lore:
+      - "<gradient:#55FFFF:#99CCFF>Click to change the biome to this type.</gradient>"
+  snowy-item:
+    item-name: "<gradient:#FFFFFF:#CCEEFF>Biome: Snowy</gradient>"
+    item-material: SNOW_BLOCK
+    item-lore:
+      - "<gradient:#55FFFF:#99CCFF>Click to change the biome to this type.</gradient>"
+  jungle-item:
+    item-name: "<gradient:#228B22:#66FF66>Biome: Jungle</gradient>"
+    item-material: JUNGLE_SAPLING
+    item-lore:
+      - "<gradient:#55FFFF:#99CCFF>Click to change the biome to this type.</gradient>"
+  swamp-item:
+    item-name: "<gradient:#9933CC:#CC99FF>Biome: Swamp</gradient>"
+    item-material: LILY_PAD
+    item-lore:
+      - "<gradient:#55FFFF:#99CCFF>Click to change the biome to this type.</gradient>"
+  close-item:
+    item-name: "<gradient:#FF5555:#FFAAAA>Close Menu</gradient>"
+    item-material: BARRIER
+    item-lore:
+      - "<gradient:#CC3333:#990000>Click to close.</gradient>"
+  panel-item:
+    item-material: "LIGHT_BLUE_STAINED_GLASS_PANE"

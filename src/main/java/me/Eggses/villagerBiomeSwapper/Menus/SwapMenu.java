@@ -2,36 +2,211 @@ package me.Eggses.villagerBiomeSwapper.Menus;
 
 import me.Eggses.villagerBiomeSwapper.Config.CustomConfigurationFile;
 import me.Eggses.villagerBiomeSwapper.Utility.MessageCreation;
-import org.bukkit.entity.*;
+import me.Eggses.villagerBiomeSwapper.Utility.Permission;
+import net.kyori.adventure.text.Component;
+import org.bukkit.entity.Player;
+import org.bukkit.entity.Villager;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.*;
+import java.util.List;
 
 public class SwapMenu extends Menu {
 
-    private static final int INFO = 13;
-    private static final int BIOME_PLAINS = 19;
-    private static final int BIOME_DESERT = 20;
-    private static final int BIOME_SAVANNA = 21;
-    private static final int BIOME_TAIGA = 22;
-    private static final int BIOME_SNOWY = 23;
-    private static final int BIOME_SWAMP = 24;
-    private static final int BIOME_JUNGLE = 25;
-    private static final int CLOSE = 40;
+    private final Player playerOwner;
+    private final Villager villager;
 
-    private final MessageCreation messageCreation;
     private final CustomConfigurationFile guiFile;
+    private final MessageCreation messageCreation;
 
-    public SwapMenu(MessageCreation messageCreation, CustomConfigurationFile guiFile) {
-        super(messageCreation, guiFile);
-        this.messageCreation = messageCreation;
+    public SwapMenu(Player playerOwner, Villager villager,
+                    CustomConfigurationFile guiFile, MessageCreation messageCreation) {
+
+        super(
+                messageCreation.createMessage(
+                        guiFile.getCustomFile().getString("biome-swapper-gui.title")),
+                Row.FIVE.getSlotCount(),
+                guiFile,
+                messageCreation
+        );
+
+        this.playerOwner = playerOwner;
+        this.villager = villager;
+
         this.guiFile = guiFile;
+        this.messageCreation = messageCreation;
+
+        setInventoryItems();
+    }
+
+    public void openGUI() {
+        playerOwner.openInventory(getInventory());
     }
 
     @Override
-    public void createInventory(Player player) {
+    protected void setInventoryItems() {
 
+        // Items
+        ItemStack infoItem = createItem(SwapMenuPath.INFO_ITEM);
+        ItemStack plainsItem = createItem(SwapMenuPath.PLAINS_ITEM);
+        ItemStack savannaItem = createItem(SwapMenuPath.SAVANNA_ITEM);
+        ItemStack desertItem = createItem(SwapMenuPath.DESERT_ITEM);
+        ItemStack taigaItem = createItem(SwapMenuPath.TAIGA_ITEM);
+        ItemStack snowyItem = createItem(SwapMenuPath.SNOWY_ITEM);
+        ItemStack jungleItem = createItem(SwapMenuPath.JUNGLE_ITEM);
+        ItemStack swampItem = createItem(SwapMenuPath.SWAMP_ITEM);
+        ItemStack closeItem = createItem(SwapMenuPath.CLOSE_ITEM);
+        ItemStack panelItem = createPanelItem(SwapMenuPath.PANEL_ITEM);
+
+        // Update Items
+        Map<ItemStack, Villager.Type> biomeItemsTypeMap = new HashMap<>();
+        biomeItemsTypeMap.put(plainsItem, Villager.Type.PLAINS);
+        biomeItemsTypeMap.put(savannaItem, Villager.Type.SAVANNA);
+        biomeItemsTypeMap.put(desertItem, Villager.Type.DESERT);
+        biomeItemsTypeMap.put(taigaItem, Villager.Type.TAIGA);
+        biomeItemsTypeMap.put(snowyItem, Villager.Type.SNOW);
+        biomeItemsTypeMap.put(jungleItem, Villager.Type.JUNGLE);
+        biomeItemsTypeMap.put(swampItem, Villager.Type.SWAMP);
+
+        updateItems(biomeItemsTypeMap);
+
+
+
+        // Setting Items
+        placeItem(infoItem, SwapMenuPath.INFO_ITEM.position);
+
+        placeItem(plainsItem, SwapMenuPath.PLAINS_ITEM.position, player -> {
+
+        });
+        placeItem(savannaItem, SwapMenuPath.SAVANNA_ITEM.position, player -> {
+
+        });
+        placeItem(desertItem, SwapMenuPath.DESERT_ITEM.position, player -> {
+
+        });
+        placeItem(taigaItem, SwapMenuPath.TAIGA_ITEM.position, player -> {
+
+        });
+        placeItem(snowyItem, SwapMenuPath.SNOWY_ITEM.position, player -> {
+
+        });
+        placeItem(jungleItem, SwapMenuPath.JUNGLE_ITEM.position, player -> {
+
+        });
+        placeItem(swampItem, SwapMenuPath.SWAMP_ITEM.position, player -> {
+
+
+        });
+        placeItem(closeItem, SwapMenuPath.CLOSE_ITEM.position, player -> {
+            getInventory().close();
+        });
+
+        ItemStack[] inventoryContents = super.getInventory().getContents();
+        for (int i = 0; i < inventoryContents.length; i++) {
+            if (inventoryContents[i] == null) {
+                placeItem(panelItem, i);
+            }
+        }
     }
 
-    @Override
-    public void run(Player player, int slotClicked) {
+    private void updateItems(Map<ItemStack, Villager.Type> biomeItemsTypeMap) {
+
+        List<String> invalidSwapLore = guiFile.getCustomFile().getStringList("biome-swapper-gui.invalid-swap-text");
+        List<String> permissionFailLore = guiFile.getCustomFile().getStringList("biome-swapper-gui.permission-fail-swap-text");
+
+        List<Component> invalidSwap = new ArrayList<>();
+        List<Component> permissionFail = new ArrayList<>();
+
+        for (String line : invalidSwapLore) {
+            invalidSwap.add(messageCreation.createMessage(line));
+        }
+        for (String line : permissionFailLore) {
+            permissionFail.add(messageCreation.createMessage(line));
+        }
+
+        for (Map.Entry<ItemStack, Villager.Type> entry : biomeItemsTypeMap.entrySet()) {
+
+            ItemStack item = entry.getKey();
+            Villager.Type biomeType = entry.getValue();
+
+            // Update Lore if No Permission
+            Permission.BiomePermission biomePermission = Permission.BiomePermission.getPermission(biomeType);
+            if (biomePermission != null) {
+                if (!playerOwner.hasPermission(biomePermission.getPermission())) {
+                    ItemMeta itemMeta = item.getItemMeta();
+                    itemMeta.lore(permissionFail);
+                    item.setItemMeta(itemMeta);
+                }
+            }
+
+            // Update Item if current Type
+            if (villager.getVillagerType() == biomeType) {
+                ItemMeta itemMeta = item.getItemMeta();
+                itemMeta.lore(invalidSwap);
+                itemMeta.setEnchantmentGlintOverride(true);
+                item.setItemMeta(itemMeta);
+                break;
+            }
+        }
+    }
+
+
+
+    private void swapBiomeType(Villager.Type targetType) {
+
+        Villager.Type currentType = villager.getVillagerType();
+
+        if (currentType == targetType) return;
+
+        Permission.BiomePermission biomePermission = Permission.BiomePermission.getPermission(targetType);
+        if (biomePermission == null) return;
+        if (!playerOwner.hasPermission(biomePermission.getPermission())) return;
+
+        // Valid Swap
+        // Take Item
+        // Play sound
+        // play Particle effect
+        villager.setVillagerType(targetType);
+    }
+
+    enum SwapMenuPath implements MenuItem {
+
+        INFO_ITEM("info-item", 13),
+        PLAINS_ITEM("plains-item", 19),
+        SAVANNA_ITEM("savanna-item", 20),
+        DESERT_ITEM("desert-item", 21),
+        TAIGA_ITEM("taiga-item", 22),
+        SNOWY_ITEM("snowy-item", 23),
+        JUNGLE_ITEM("jungle-item", 24),
+        SWAMP_ITEM("swamp-item", 25),
+        CLOSE_ITEM("close-item", 40),
+        PANEL_ITEM("panel-item", -1);
+
+        private static final String BASE_PATH = "biome-swapper-gui.";
+
+        private final String itemPath;
+        private final int position;
+
+        SwapMenuPath(String itemPath, int position) {
+            this.itemPath = itemPath;
+            this.position = position;
+        }
+
+        @Override
+        public String getMaterialPath() {
+            return BASE_PATH + itemPath + MATERIAL_PATH;
+        }
+
+        @Override
+        public String getNamePath() {
+            return BASE_PATH + itemPath + NAME_PATH;
+        }
+
+        @Override
+        public String getLorePath() {
+            return BASE_PATH + itemPath + LORE_PATH;
+        }
 
     }
 }

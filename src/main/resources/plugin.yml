@@ -4,7 +4,7 @@ main: me.Eggses.villagerBiomeSwapper.VillagerBiomeSwapper
 api-version: '1.21'
 load: STARTUP
 authors: [ Eggses ]
-description: Plugin that lets you swap the biome of Villagers or Wandering Traders!
+description: Plugin that lets you swap the biome of Villagers!
 
 commands:
   villagerbiomeswapper:
@@ -33,7 +33,7 @@ permissions:
       villagerbiomeswapper.base: true
 
   villagerbiomeswapper.give:
-    description: Allows use of the /vbs give [player] command.
+    description: Allows use of the /vbs give [player] and /vbs giveall commands.
     default: op
     children:
       villagerbiomeswapper.base: true
@@ -46,14 +46,14 @@ permissions:
 
 
   villagerbiomeswapper.convert.*:
-    description: Allows converting of all converting villagers or traders to any biome variant.
+    description: Allows converting of all converting villagers to any biome variant.
     default: op
     children:
       villagerbiomeswapper.convert.biome.*: true
-      villagerbiomeswapper.convert.entity.*: true
+      villagerbiomeswapper.convert.entity.villager: true
 
   villagerbiomeswapper.convert.biome.*:
-    description: Allows converting villagers or traders to any biome variant
+    description: Allows converting villagers to any biome variant
     default: op
     children:
       villagerbiomeswapper.convert.biome.desert: true
@@ -66,39 +66,29 @@ permissions:
 
 
   villagerbiomeswapper.convert.biome.desert:
-    description: Allows converting villagers or traders to the desert biome variant.
+    description: Allows converting villagers to the desert biome variant.
     default: op
   villagerbiomeswapper.convert.biome.jungle:
-    description: Allows converting villagers or traders to the jungle biome variant
+    description: Allows converting villagers to the jungle biome variant
     default: op
   villagerbiomeswapper.convert.biome.plains:
-    description: Allows converting villagers or traders to the plains biome variant
+    description: Allows converting villagers to the plains biome variant
     default: op
   villagerbiomeswapper.convert.biome.savanna:
-    description: Allows converting villagers or traders to the savanna biome variant
+    description: Allows converting villagers to the savanna biome variant
     default: op
   villagerbiomeswapper.convert.biome.snow:
-    description: Allows converting villagers or traders to the snow biome variant
+    description: Allows converting villagers to the snow biome variant
     default: op
   villagerbiomeswapper.convert.biome.swamp:
-    description: Allows converting villagers or traders to the swamp biome variant
+    description: Allows converting villagers to the swamp biome variant
     default: op
   villagerbiomeswapper.convert.biome.taiga:
-    description: Allows converting villagers or traders to the taiga biome variant
+    description: Allows converting villagers to the taiga biome variant
     default: op
-
-  villagerbiomeswapper.convert.entity.*:
-    description: Allows converting entities (villagers or wandering traders)
-    default: op
-    children:
-      villagerbiomeswapper.convert.entity.villager: true
-      villagerbiomeswapper.convert.entity.wanderingtrader: true
 
   villagerbiomeswapper.convert.entity.villager:
     description: Allows converting villagers to different biome variants.
-    default: op
-  villagerbiomeswapper.convert.entity.wanderingtrader:
-    description: Allows converting wandering traders to different villager biome variants.
     default: op
 
 

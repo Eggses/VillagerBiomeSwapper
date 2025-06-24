@@ -6,7 +6,8 @@ import me.Eggses.villagerBiomeSwapper.Config.Messages;
 import me.Eggses.villagerBiomeSwapper.DataManager.TraderManager;
 import me.Eggses.villagerBiomeSwapper.Items.SwapperItem;
 import me.Eggses.villagerBiomeSwapper.Listeners.RightClickEntity;
-import me.Eggses.villagerBiomeSwapper.Menus.SwapMenu;
+import me.Eggses.villagerBiomeSwapper.Menus.RightClick;
+import me.Eggses.villagerBiomeSwapper.MenusOld.MenuManager;
 import me.Eggses.villagerBiomeSwapper.Utility.Commands;
 import me.Eggses.villagerBiomeSwapper.Utility.MessageCreation;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -28,6 +29,7 @@ public final class VillagerBiomeSwapper extends JavaPlugin {
         MessageCreation messageCreation = new MessageCreation(messagesFile);
         Messages.setMessagesFile(messagesFile);
 
+        /*
         // Item Managers
         SwapperItem swapperItem = new SwapperItem(this, messageCreation, biomeSwapperItemFile);
 
@@ -35,7 +37,8 @@ public final class VillagerBiomeSwapper extends JavaPlugin {
         TraderManager traderManager = new TraderManager();
 
         // Menus
-        SwapMenu swapMenu = new SwapMenu(messageCreation, guiFile);
+
+        MenuManager menuManager = new MenuManager(this, messageCreation, guiFile, traderManager, swapperItem);
 
         // Commands
         Objects.requireNonNull(getCommand(Commands.BASE.getCommand())).setExecutor(
@@ -44,7 +47,11 @@ public final class VillagerBiomeSwapper extends JavaPlugin {
 
         // Events
         getServer().getPluginManager().registerEvents((new RightClickEntity
-                (this, swapperItem, swapMenu, traderManager)), this);
+                (this, swapperItem, menuManager, traderManager)), this);
+
+         */
+
+        getServer().getPluginManager().registerEvents(new RightClick(guiFile, messageCreation), this);
 
     }
 

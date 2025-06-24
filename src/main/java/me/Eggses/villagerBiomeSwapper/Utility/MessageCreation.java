@@ -24,18 +24,25 @@ public class MessageCreation {
             text = "Missing Text Value!";
         }
 
-        String prefix = messagesFile.getCustomFile().getString(Messages.PREFIX.getMessage());
-        placeHolders.put(PlaceHolder.PREFIX.getPlaceHolder(), prefix);
+        if (placeHolders != null) {
 
-        for (Map.Entry<String, String> entry : placeHolders.entrySet()) {
+            String prefix = messagesFile.getCustomFile().getString(Messages.PREFIX.getMessage());
+            placeHolders.put(PlaceHolder.PREFIX.getPlaceHolder(), prefix);
 
-            String placeHolder = entry.getKey();
-            String value = entry.getValue();
+            for (Map.Entry<String, String> entry : placeHolders.entrySet()) {
 
-            text = text.replace(placeHolder, value);
+                String placeHolder = entry.getKey();
+                String value = entry.getValue();
+
+                text = text.replace(placeHolder, value);
+            }
         }
 
         return applyColour(text);
+    }
+
+    public Component createMessage(String text) {
+        return createMessage(text, null);
     }
 
     private Component applyColour(String text) {
