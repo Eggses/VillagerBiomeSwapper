@@ -6,7 +6,6 @@ import me.Eggses.villagerBiomeSwapper.Config.Messages;
 import me.Eggses.villagerBiomeSwapper.Items.SwapperItem;
 import me.Eggses.villagerBiomeSwapper.Listeners.InventoryEvent;
 import me.Eggses.villagerBiomeSwapper.Listeners.RightClickEntity;
-import me.Eggses.villagerBiomeSwapper.Utility.Commands;
 import me.Eggses.villagerBiomeSwapper.Utility.MessageCreation;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -31,14 +30,12 @@ public final class VillagerBiomeSwapper extends JavaPlugin {
         // Item Managers
         SwapperItem swapperItem = new SwapperItem(this, messageCreation, biomeSwapperItemFile);
 
-
-        // Commands
-        Objects.requireNonNull(getCommand(Commands.BASE.getCommand())).setExecutor(
-                new BaseCommand(this, biomeSwapperItemFile, guiFile, messagesFile, messageCreation, swapperItem));
-
         // Events
         getServer().getPluginManager().registerEvents(new RightClickEntity(this, swapperItem, messageCreation, guiFile), this);
         getServer().getPluginManager().registerEvents(new InventoryEvent(), this);
+
+        // Commands
+        Objects.requireNonNull(getCommand("villagerbiomeswapper")).setExecutor(new BaseCommand(this, biomeSwapperItemFile, guiFile, messagesFile, messageCreation, swapperItem));
     }
 
     @Override

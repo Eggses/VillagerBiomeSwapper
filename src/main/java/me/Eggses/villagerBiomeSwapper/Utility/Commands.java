@@ -2,8 +2,6 @@ package me.Eggses.villagerBiomeSwapper.Utility;
 
 public enum Commands {
 
-    BASE("villagerbiomeswapper"),
-
     GIVE("give"),
     GIVE_ALL("giveall"),
 

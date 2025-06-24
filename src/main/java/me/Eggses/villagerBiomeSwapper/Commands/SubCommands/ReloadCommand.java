@@ -48,6 +48,7 @@ public class ReloadCommand implements SubCommand {
             biomeSwapperItemFile.reloadCustomFile();
             guiFile.reloadCustomFile();
             messagesFile.reloadCustomFile();
+            return;
         }
 
         String file = args[1].toLowerCase();
