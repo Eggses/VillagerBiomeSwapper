@@ -119,9 +119,11 @@ public class SwapMenu extends Menu {
         List<Component> permissionFail = new ArrayList<>();
 
         for (String line : invalidSwapLore) {
+            System.out.println(line);
             invalidSwap.add(messageCreation.createMessage(line));
         }
         for (String line : permissionFailLore) {
+            System.out.println(line);
             permissionFail.add(messageCreation.createMessage(line));
         }
 
@@ -184,6 +186,9 @@ public class SwapMenu extends Menu {
         PANEL_ITEM("panel-item", -1);
 
         private static final String BASE_PATH = "biome-swapper-gui.";
+        private static final String MATERIAL_PATH = ".item-material";
+        private static final String NAME_PATH = ".item-name";
+        private static final String LORE_PATH = ".item-lore";
 
         private final String itemPath;
         private final int position;

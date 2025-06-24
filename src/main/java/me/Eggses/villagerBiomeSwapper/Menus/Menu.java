@@ -30,7 +30,7 @@ public abstract class Menu implements InventoryHolder {
                    CustomConfigurationFile guiFile, MessageCreation messageCreation) {
 
         // This class is the owner as it's an inventory holder.
-        inventory = Bukkit.createInventory(this, rowCount * 9, title);
+        inventory = Bukkit.createInventory(this, rowCount, title);
 
         this.guiFile = guiFile;
         this.messageCreation = messageCreation;
