@@ -69,7 +69,7 @@ reload:
 # ==============================
 # Help Command
 # ==============================
-# Messages for the /vbs help command, providing a list of available commands.
+# Messages for the /vbs help command, providing a list of available commands
 help:
   help-message: |
     <dark_gray>────────</dark_gray> <bold><gradient:gold:yellow>Villager Biome Swapper</gradient:gold:yellow></bold> <dark_gray>────────</dark_gray>
@@ -81,7 +81,7 @@ help:
     <#ffaa00>*</#ffaa00> <gradient:#2a9df4:#44c8ff>/vbs giveall</gradient:#2a9df4:#44c8ff>  
      <gray>-> Gives the Villager Biome Swapper Item to all Players.</gray>
     
-    <#ffaa00>*</#ffaa00> <gradient:#2a9df4:#44c8ff>/vbs reload [file]</gradient:#2a9df4:#44c8ff>  
+    <#ffaa00>*</#ffaa00> <gradient:#2a9df4:#44c8ff>/vbs reload [config|messages|gui|item]</gradient:#2a9df4:#44c8ff>  
      <gray>-> Reloads specific or all configuration files.</gray>
     
     <#ffaa00>*</#ffaa00> <gradient:#2a9df4:#44c8ff>/vbs help</gradient:#2a9df4:#44c8ff>  
