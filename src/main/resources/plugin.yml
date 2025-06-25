@@ -15,12 +15,15 @@ commands:
     permission: villagerbiomeswapper.base
 
 permissions:
-
   villagerbiomeswapper.*:
     description: Grants access to all features.
     default: op
     children:
+      villagerbiomeswapper.base: true
       villagerbiomeswapper.reload: true
+      villagerbiomeswapper.give: true
+      villagerbiomeswapper.help: true
+      villagerbiomeswapper.convert.*: true
 
   villagerbiomeswapper.base:
     description: Ability to use base command.
@@ -39,65 +42,53 @@ permissions:
       villagerbiomeswapper.base: true
 
   villagerbiomeswapper.help:
-    description: Allows use of the /vbs help command
+    description: Allows use of the /vbs help command.
     default: op
     children:
       villagerbiomeswapper.base: true
 
-
   villagerbiomeswapper.convert.*:
-    description: Allows converting of all converting villagers to any biome variant.
+    description: Allows converting villagers to any biome variant.
     default: op
     children:
       villagerbiomeswapper.convert.biome.*: true
       villagerbiomeswapper.convert.entity.villager: true
 
+
+  villagerbiomeswapper.convert.entity.villager:
+    description: Allows converting villagers to different biome variants.
+    default: op
+
   villagerbiomeswapper.convert.biome.*:
-    description: Allows converting villagers to any biome variant
+    description: Allows converting villagers to any biome variant.
     default: op
     children:
       villagerbiomeswapper.convert.biome.desert: true
       villagerbiomeswapper.convert.biome.jungle: true
       villagerbiomeswapper.convert.biome.plains: true
       villagerbiomeswapper.convert.biome.savanna: true
-      villagerbiomeswapper.convert.biome.snow: true
+      villagerbiomeswapper.convert.biome.snowy: true
       villagerbiomeswapper.convert.biome.swamp: true
       villagerbiomeswapper.convert.biome.taiga: true
-
 
   villagerbiomeswapper.convert.biome.desert:
     description: Allows converting villagers to the desert biome variant.
     default: op
   villagerbiomeswapper.convert.biome.jungle:
-    description: Allows converting villagers to the jungle biome variant
+    description: Allows converting villagers to the jungle biome variant.
     default: op
   villagerbiomeswapper.convert.biome.plains:
-    description: Allows converting villagers to the plains biome variant
+    description: Allows converting villagers to the plains biome variant.
     default: op
   villagerbiomeswapper.convert.biome.savanna:
-    description: Allows converting villagers to the savanna biome variant
+    description: Allows converting villagers to the savanna biome variant.
     default: op
-  villagerbiomeswapper.convert.biome.snow:
-    description: Allows converting villagers to the snow biome variant
+  villagerbiomeswapper.convert.biome.snowy:
+    description: Allows converting villagers to the snow biome variant.
     default: op
   villagerbiomeswapper.convert.biome.swamp:
-    description: Allows converting villagers to the swamp biome variant
+    description: Allows converting villagers to the swamp biome variant.
     default: op
   villagerbiomeswapper.convert.biome.taiga:
-    description: Allows converting villagers to the taiga biome variant
+    description: Allows converting villagers to the taiga biome variant.
     default: op
-
-  villagerbiomeswapper.convert.entity.villager:
-    description: Allows converting villagers to different biome variants.
-    default: op
-
-
-
-
-
-
-
-
-
-
-

@@ -135,7 +135,6 @@ public class SwapMenu extends Menu {
                 itemMeta.lore(invalidSwap);
                 itemMeta.setEnchantmentGlintOverride(true);
                 item.setItemMeta(itemMeta);
-                break;
             }
         }
     }

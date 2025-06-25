@@ -16,11 +16,10 @@
 # Configuration for the Villager Biome Swapper item.
 biome-swapper-item:
   item-material: 'YELLOW_DYE'
-  item-name: "<gradient:gold:yellow><italic:false>Villager Biome Swapper (Right Click)</italic:false></gradient:gold:yellow>"
+  item-name: "<italic:false><gradient:gold:yellow>Villager Biome Swapper</gradient:gold:yellow><gray> (Right Click)</gray></italic:false>"
   item-lore:
-    - "<gradient:blue:aqua>Right click a villager</gradient:blue:aqua>"
-    - "<gradient:blue:aqua>not traded with to swap</gradient:blue:aqua>"
-    - "<gradient:blue:aqua>its biome type.</gradient:blue:aqua>"
+    - "<gradient:blue:aqua><italic:false>Right click a villager not</italic:false></gradient:blue:aqua>"
+    - "<gradient:blue:aqua><italic:false>yet traded to swap its biome.</italic:false></gradient:blue:aqua>"
     - "<gradient:blue:aqua></gradient:blue:aqua>"
-    - "<gradient:blue:aqua>Consumed on use.</gradient:blue:aqua>"
+    - "<gradient:blue:aqua><italic:false>Consumed On Use</italic:false></gradient:blue:aqua>"
   item-glow: true

@@ -27,7 +27,7 @@ public enum Permission {
         JUNGLE("convert.biome.jungle", Villager.Type.JUNGLE),
         PLAINS("convert.biome.plains", Villager.Type.PLAINS),
         SAVANNA("convert.biome.savanna", Villager.Type.SAVANNA),
-        SNOW("convert.biome.snow", Villager.Type.SNOW),
+        SNOW("convert.biome.snowy", Villager.Type.SNOW),
         SWAMP("convert.biome.swamp", Villager.Type.SWAMP),
         TAIGA("convert.biome.taiga", Villager.Type.TAIGA);
 

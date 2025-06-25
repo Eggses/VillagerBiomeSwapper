@@ -22,7 +22,7 @@ public enum Messages {
     RELOAD_ALL_CONFIGS("reload.all-configs"),
     RELOAD_CONFIG("reload.config"),
     RELOAD_MESSAGES("reload.messages"),
-    RELOAD_BIOME_SWAPPER_ITEM("reload.biome-swapper-item"),
+    RELOAD_BIOME_SWAPPER_ITEM("reload.item"),
     RELOAD_GUI("reload.gui"),
     RELOAD_SYNTAX_ERROR("reload.syntax-error");
 
