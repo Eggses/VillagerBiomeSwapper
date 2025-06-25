@@ -26,7 +26,7 @@
 # ==============================
 # Defines the prefix shown in all plugin messages.
 # Customise it to match your server's theme.
-prefix: '<gradient:#228B22:#2E8B57>[</gradient:#228B22:#2E8B57><bold><gradient:gold:yellow>VBS</gradient:gold:yellow></bold><gradient:#228B22:#2E8B57>]</gradient:#228B22:#2E8B57>'
+prefix: '<gradient:#228B22:#2E8B57>[</gradient:#228B22:#2E8B57><bold><gradient:#FFC107:#FFD54F>VBS</gradient:#FFC107:#FFD54F></bold><gradient:#228B22:#2E8B57>]</gradient:#228B22:#2E8B57>'
 
 # ==============================
 # General Error Messages
@@ -42,8 +42,8 @@ unknown-player: '%prefix% <red>Error:</red> <gradient:#ff5555:#ffaaaa>Player %ta
 # ==============================
 # Messages for the /vbs give command, granting the Villager Biome Swapper item.
 give:
-  grant-item-self: '%prefix% <gradient:blue:aqua>Villager Biome Swapper item granted to</gradient:blue:aqua> <gradient:#00FF00:#32CD32>%player%</gradient:#00FF00:#32CD32>.'
-  grant-item-target: '%prefix% <gradient:blue:aqua>Villager Biome Swapper item granted to</gradient:blue:aqua> <gradient:#00FF00:#32CD32>%target%</gradient:#00FF00:#32CD32>.'
+  grant-item-self: '%prefix% <gradient:#2a9df4:#44c8ff>Villager Biome Swapper item granted to</gradient:#2a9df4:#44c8ff> <gradient:#00FF00:#32CD32>%player%</gradient:#00FF00:#32CD32>.'
+  grant-item-target: '%prefix% <gradient:#2a9df4:#44c8ff>Villager Biome Swapper item granted to</gradient:#2a9df4:#44c8ff> <gradient:#00FF00:#32CD32>%target%</gradient:#00FF00:#32CD32>.'
   syntax-error: '%prefix% <red>Error:</red> <gradient:#ff5555:#ffaaaa>Invalid usage! Use /vbs give [player].</gradient:#ff5555:#ffaaaa>'
 
 # ==============================
@@ -51,7 +51,7 @@ give:
 # ==============================
 # Messages for the /vbs giveall command, granting the item to all players.
 give-all:
-  grant-item: '%prefix% <gradient:blue:aqua>Villager Biome Swapper item granted to all players!</gradient:blue:aqua>'
+  grant-item: '%prefix% <gradient:#2a9df4:#44c8ff>Villager Biome Swapper item granted to all players!</gradient:#2a9df4:#44c8ff>'
   syntax-error: '%prefix% <red>Error:</red> <gradient:#ff5555:#ffaaaa>Invalid usage! Use /vbs giveall.</gradient:#ff5555:#ffaaaa>'
 
 # ==============================
@@ -59,11 +59,11 @@ give-all:
 # ==============================
 # Messages for the /vbs reload command, allowing admins to reload config files.
 reload:
-  all-configs: '%prefix% <gradient:blue:aqua>All configuration files have been successfully reloaded.</gradient:blue:aqua>'
-  config: '%prefix% <gradient:blue:aqua>Main configuration file successfully reloaded!</gradient:blue:aqua>'
-  messages: '%prefix% <gradient:blue:aqua>Messages configuration file successfully reloaded!</gradient:blue:aqua>'
-  items: '%prefix% <gradient:blue:aqua>Item configuration file successfully reloaded!</gradient:blue:aqua>'
-  gui: '%prefix% <gradient:blue:aqua>GUI configuration file successfully reloaded!</gradient:blue:aqua>'
+  all-configs: '%prefix% <gradient:#2a9df4:#44c8ff>All configuration files have been successfully reloaded.</gradient:#2a9df4:#44c8ff>'
+  config: '%prefix% <gradient:#2a9df4:#44c8ff>Main configuration file successfully reloaded!</gradient:#2a9df4:#44c8ff>'
+  messages: '%prefix% <gradient:#2a9df4:#44c8ff>Messages configuration file successfully reloaded!</gradient:#2a9df4:#44c8ff>'
+  item: '%prefix% <gradient:#2a9df4:#44c8ff>Item configuration file successfully reloaded!</gradient:#2a9df4:#44c8ff>'
+  gui: '%prefix% <gradient:#2a9df4:#44c8ff>GUI configuration file successfully reloaded!</gradient:#2a9df4:#44c8ff>'
   syntax-error: '%prefix% <red>Error:</red> <gradient:#ff5555:#ffaaaa>Invalid usage! Use /vbs reload [config|messages|gui|item].</gradient:#ff5555:#ffaaaa>'
 
 # ==============================
@@ -73,17 +73,17 @@ reload:
 help:
   help-message: |
     <dark_gray>────────</dark_gray> <bold><gradient:gold:yellow>Villager Biome Swapper</gradient:gold:yellow></bold> <dark_gray>────────</dark_gray>
-    <dark_gray>──────────── </dark_gray><bold><gradient:#2a9df4:#44c8ff>Command Help</gradient:#2a9df4:#44c8ff></bold><dark_gray> ────────────</dark_gray>
+    <dark_gray>──────────── </dark_gray><bold><gradient:#228B22:#2E8B57>Command Help</gradient:#228B22:#2E8B57></bold><dark_gray> ────────────</dark_gray>
 
-    <#ffaa00>*</#ffaa00> <gradient:gold:yellow>/vbs give [player]</gradient:gold:yellow>  
-     <gradient:blue:aqua>-> Gives the Villager Biome Swapper Item to the target.</gradient:blue:aqua>
+    <#ffaa00>*</#ffaa00> <gradient:#2a9df4:#44c8ff>/vbs give [player]</gradient:#2a9df4:#44c8ff>  
+     <gray>-> Gives the Villager Biome Swapper Item to the target.</gray>
     
-    <#ffaa00>*</#ffaa00> <gradient:gold:yellow>/vbs giveall</gradient:gold:yellow>  
-     <gradient:blue:aqua>-> Gives the Villager Biome Swapper Item to all Players.</gradient:blue:aqua>
+    <#ffaa00>*</#ffaa00> <gradient:#2a9df4:#44c8ff>/vbs giveall</gradient:#2a9df4:#44c8ff>  
+     <gray>-> Gives the Villager Biome Swapper Item to all Players.</gray>
     
-    <#ffaa00>*</#ffaa00> <gradient:gold:yellow>/vbs reload [file]</gradient:gold:yellow>  
-     <gradient:blue:aqua>-> Reloads specific or all configuration files.</gradient:blue:aqua>
+    <#ffaa00>*</#ffaa00> <gradient:#2a9df4:#44c8ff>/vbs reload [file]</gradient:#2a9df4:#44c8ff>  
+     <gray>-> Reloads specific or all configuration files.</gray>
     
-    <#ffaa00>*</#ffaa00> <gradient:gold:yellow>/vbs help</gradient:gold:yellow>  
-     <gradient:blue:aqua>-> Lists available commands.</gradient:blue:aqua>
+    <#ffaa00>*</#ffaa00> <gradient:#2a9df4:#44c8ff>/vbs help</gradient:#2a9df4:#44c8ff>  
+     <gray>-> Lists available commands.</gray>
   syntax-error: '%prefix% <red>Error:</red> <gradient:#ff5555:#ffaaaa>Invalid usage! Use /vbs help.</gradient:#ff5555:#ffaaaa>'

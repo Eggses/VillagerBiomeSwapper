@@ -13,7 +13,7 @@
 # ==============================
 # Configuration for the Villager Biome Swapper GUI.
 biome-swapper-gui:
-  title: "%prefix% <bold><gradient:gold:yellow>Set Villager Biome</gradient:gold:yellow></bold>"
+  title: "%prefix% <bold><gradient:#2a9df4:#44c8ff>Set Villager Biome</gradient:#2a9df4:#44c8ff></bold>"
   invalid-swap-text:
     - "<gradient:#ff5555:#ffaaaa><italic:false>Biome type already selected!</italic:false></gradient:#ff5555:#ffaaaa>"
   permission-fail-swap-text:
@@ -63,4 +63,4 @@ biome-swapper-gui:
     item-material: 'BARRIER'
     item-lore: []
   panel-item:
-    item-material: "LIGHT_BLUE_STAINED_GLASS_PANE"
+    item-material: "GRAY_STAINED_GLASS_PANE"
